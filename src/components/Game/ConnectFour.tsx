@@ -10,9 +10,22 @@ const ConnectFour = () => {
     state: ConnectFourStateType,
     action: {
       type: string;
-      payload?: ConnectFourStateType;
+      payload?: { [key: string]: number };
     },
   ) => {
+    if (action.type === 'player_play') {
+      if (action.payload) {
+        const { rowIndex, cellIndex } = action.payload;
+
+        if (!state.board[rowIndex][cellIndex]) {
+          state.board[rowIndex][cellIndex] = state.currentPlayer;
+          state.currentPlayer = state.currentPlayer === 1 ? 2 : 1;
+        }
+
+        return { ...state };
+      }
+    }
+
     return state;
   };
 
@@ -37,11 +50,19 @@ const ConnectFour = () => {
     <div>
       <table>
         <tbody>
-          {gameState.board.map((row, i) => {
+          {gameState.board.map((row, rowIndex) => {
+            console.log(row, rowIndex);
             return (
               <tr>
-                {row.map(cell => (
-                  <td>Pepe</td>
+                {row.map((cell: null | number, cellIndex: number) => (
+                  <td
+                    onClick={() => {
+                      dispatchGameState({ type: 'player_play', payload: { rowIndex, cellIndex } });
+                    }}
+                    className='cursor-pointer border'
+                  >
+                    {cell ? cell : 'pepe'}
+                  </td>
                 ))}
               </tr>
             );
