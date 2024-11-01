@@ -4,6 +4,7 @@ import React from 'react';
 import { useReducer } from 'react';
 
 import { ConnectFourStateType } from './ConnectFour';
+import Cell from '../Board/Cell';
 
 const ConnectFour = () => {
   const gameReducer = (
@@ -16,7 +17,6 @@ const ConnectFour = () => {
     if (action.type === 'player_play') {
       if (action.payload) {
         const { rowIndex, cellIndex } = action.payload;
-
         if (!state.board[rowIndex][cellIndex]) {
           state.board[rowIndex][cellIndex] = state.currentPlayer;
           state.currentPlayer = state.currentPlayer === 1 ? 2 : 1;
@@ -45,24 +45,19 @@ const ConnectFour = () => {
   };
 
   const [gameState, dispatchGameState] = useReducer(gameReducer, initialGameState);
-  console.log(gameState);
+  console.log(gameState.board);
   return (
-    <div>
-      <table>
+    <div className='flex h-full items-center justify-center'>
+      <table className='h-[500px] w-[600px] border-8 border-cyan-400'>
         <tbody>
           {gameState.board.map((row, rowIndex) => {
-            console.log(row, rowIndex);
             return (
               <tr>
                 {row.map((cell: null | number, cellIndex: number) => (
-                  <td
-                    onClick={() => {
-                      dispatchGameState({ type: 'player_play', payload: { rowIndex, cellIndex } });
-                    }}
-                    className='cursor-pointer border'
-                  >
-                    {cell ? cell : 'pepe'}
-                  </td>
+                  <Cell
+                    onClick={() => dispatchGameState({ type: 'player_play', payload: { rowIndex, cellIndex } })}
+                    value={cell}
+                  />
                 ))}
               </tr>
             );

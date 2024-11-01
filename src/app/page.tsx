@@ -1,9 +1,5 @@
-import ConnectFour from "@/components/Game/ConnectFour";
+import ConnectFour from '../components/Game/ConnectFour.tsx';
 
 export default function Home() {
-  return (
-    <div>
-      <ConnectFour></ConnectFour>
-    </div>
-  );
+  return <ConnectFour />;
 }
