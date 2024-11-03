@@ -7,7 +7,7 @@ const Cell = ({ onClick, value }: { onClick: () => void; value: null | number })
 
     return value ? colors[value] : 'bg-white';
   };
-  console.log(paintBackground);
+
   return (
     <td onClick={() => onClick()} className='h-12 w-12 cursor-pointer border-8 border-cyan-400 bg-cyan-400'>
       <div className={`${paintBackground()} h-full w-full rounded-full`}></div>
