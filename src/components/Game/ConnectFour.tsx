@@ -5,9 +5,25 @@ import { useReducer } from 'react';
 
 import Cell from '../Board/Cell';
 import { gameReducer, initialGameState } from '@/reducer/gameReducer';
+import { GAME_TYPES } from '@/reducer/types';
+
+const { PLAYER_PLAY } = GAME_TYPES;
 
 const ConnectFour = () => {
   const [gameState, dispatchGameState] = useReducer(gameReducer, initialGameState);
+  const { currentPlayer } = gameState;
+
+  const play = ({
+    rowIndex,
+    cellIndex,
+    currentPlayer,
+  }: {
+    rowIndex: number;
+    cellIndex: number;
+    currentPlayer: number;
+  }) => {
+    dispatchGameState({ type: PLAYER_PLAY, payload: { rowIndex, cellIndex, currentPlayer } });
+  };
 
   return (
     <div className='flex h-full items-center justify-center'>
@@ -17,11 +33,7 @@ const ConnectFour = () => {
             return (
               <tr key={rowIndex}>
                 {row.map((cell: null | number, cellIndex: number) => (
-                  <Cell
-                    key={cellIndex}
-                    onClick={() => dispatchGameState({ type: 'player_play', payload: { rowIndex, cellIndex } })}
-                    value={cell}
-                  />
+                  <Cell key={cellIndex} onClick={() => play({ rowIndex, cellIndex, currentPlayer })} value={cell} />
                 ))}
               </tr>
             );
