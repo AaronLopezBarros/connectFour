@@ -1,17 +1,16 @@
 'use client';
 
-import React from 'react';
-import { useReducer } from 'react';
+import React, { useReducer } from 'react';
 
 import Cell from '../Board/Cell';
-import { gameReducer, initialGameState } from '@/reducer/gameReducer';
 import { GAME_TYPES } from '@/reducer/types';
+import { gameReducer, initialGameState } from '@/reducer/gameReducer';
 
-const { PLAYER_PLAY } = GAME_TYPES;
+const { PLAYER_PLAY, CHECK_BOARD } = GAME_TYPES;
 
 const ConnectFour = () => {
   const [gameState, dispatchGameState] = useReducer(gameReducer, initialGameState);
-  const { currentPlayer } = gameState;
+  const { currentPlayer, gameOver } = gameState;
 
   const play = ({
     rowIndex,
@@ -23,8 +22,9 @@ const ConnectFour = () => {
     currentPlayer: number;
   }) => {
     dispatchGameState({ type: PLAYER_PLAY, payload: { rowIndex, cellIndex, currentPlayer } });
+    dispatchGameState({ type: CHECK_BOARD, payload: { rowIndex, cellIndex, currentPlayer } });
   };
-
+  console.log(gameOver);
   return (
     <div className='flex h-full items-center justify-center'>
       <table className='h-[500px] w-[600px] border-8 border-cyan-400'>
