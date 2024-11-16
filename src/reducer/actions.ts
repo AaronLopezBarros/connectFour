@@ -14,6 +14,7 @@ export const playTurn = ({ state, currentPlayer, cellIndex }: PlayTurnType) => {
       break;
     }
   }
+  return { ...state };
 };
 
 export const checkBoard = (state: ConnectFourType) => {

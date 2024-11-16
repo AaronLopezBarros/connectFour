@@ -26,11 +26,10 @@ export const gameReducer = (
     payload: { [key: string]: number };
   },
 ): ConnectFourType => {
-  const { rowIndex, cellIndex, currentPlayer } = action.payload;
+  const { cellIndex, currentPlayer } = action.payload;
 
   if (action.type === PLAYER_PLAY) {
-    playTurn({ state, currentPlayer, cellIndex });
-    return { ...state };
+    return playTurn({ state, currentPlayer, cellIndex });
   }
 
   if (action.type === CHECK_BOARD) {
