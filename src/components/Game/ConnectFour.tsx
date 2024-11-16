@@ -1,46 +1,29 @@
 'use client';
 
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 
-import Cell from '../Board/Cell';
-import { GAME_TYPES } from '@/reducer/types';
+import { Board } from '../Board/Board';
+
 import { gameReducer, initialGameState } from '@/reducer/gameReducer';
+import { GAME_TYPES } from '@/reducer/types';
+import { PlayType } from './ConnectFourType';
 
-const { PLAYER_PLAY, CHECK_BOARD } = GAME_TYPES;
+const { PLAYER_PLAY, CHECK_BOARD, START_GAME } = GAME_TYPES;
 
 const ConnectFour = () => {
   const [gameState, dispatchGameState] = useReducer(gameReducer, initialGameState);
-  const { currentPlayer, gameOver } = gameState;
+  const { gameOver } = gameState;
 
-  const play = ({
-    rowIndex,
-    cellIndex,
-    currentPlayer,
-  }: {
-    rowIndex: number;
-    cellIndex: number;
-    currentPlayer: number;
-  }) => {
+  const play = ({ rowIndex, cellIndex, currentPlayer }: PlayType) => {
     dispatchGameState({ type: PLAYER_PLAY, payload: { rowIndex, cellIndex, currentPlayer } });
     dispatchGameState({ type: CHECK_BOARD, payload: { rowIndex, cellIndex, currentPlayer } });
   };
-  console.log(gameOver);
+
   return (
-    <div className='flex h-full items-center justify-center'>
-      <table className='h-[500px] w-[600px] border-8 border-cyan-400'>
-        <tbody>
-          {gameState.board.map((row, rowIndex) => {
-            return (
-              <tr key={rowIndex}>
-                {row.map((cell: null | number, cellIndex: number) => (
-                  <Cell key={cellIndex} onClick={() => play({ rowIndex, cellIndex, currentPlayer })} value={cell} />
-                ))}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <button onClick={() => dispatchGameState({ type: START_GAME, payload: {} })}>Jugar Ya</button>
+      {!gameOver && <Board board={gameState.board} currentPlayer={gameState.currentPlayer} play={play} />}
+    </>
   );
 };
 

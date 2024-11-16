@@ -5,3 +5,9 @@ export type ConnectFourType = {
   board: (null[] | number[])[];
   gameOver: boolean;
 };
+
+export type PlayType = {
+  rowIndex: number;
+  cellIndex: number;
+  currentPlayer: number;
+};

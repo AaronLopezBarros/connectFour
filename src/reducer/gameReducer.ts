@@ -1,7 +1,7 @@
 import { ConnectFourType } from '@/components/Game/ConnectFourType';
 import { GAME_TYPES } from './types';
 
-const { PLAYER_PLAY, CHECK_BOARD } = GAME_TYPES;
+const { PLAYER_PLAY, CHECK_BOARD, START_GAME } = GAME_TYPES;
 
 export const initialGameState: ConnectFourType = {
   player1: 1,
@@ -15,7 +15,7 @@ export const initialGameState: ConnectFourType = {
     [null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null],
   ],
-  gameOver: false,
+  gameOver: true,
 };
 
 export const gameReducer = (
@@ -69,6 +69,10 @@ export const gameReducer = (
     }
 
     return state;
+  }
+
+  if (action.type === START_GAME) {
+    return { ...state, gameOver: false };
   }
 
   return state;
