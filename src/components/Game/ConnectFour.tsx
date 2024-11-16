@@ -18,7 +18,7 @@ const ConnectFour = () => {
     dispatchGameState({ type: PLAYER_PLAY, payload: { rowIndex, cellIndex, currentPlayer } });
     dispatchGameState({ type: CHECK_BOARD, payload: { rowIndex, cellIndex, currentPlayer } });
   };
-
+  console.log(gameOver);
   return (
     <>
       <button onClick={() => dispatchGameState({ type: START_GAME, payload: {} })}>Jugar Ya</button>
