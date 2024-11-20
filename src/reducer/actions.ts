@@ -17,7 +17,7 @@ export const playTurn = ({ state, currentPlayer, cellIndex }: PlayTurnType) => {
   return { ...state };
 };
 
-export const checkBoard = (state: ConnectFourType) => {
+export const checkBoard = (state: ConnectFourType, currentPlayer: number) => {
   for (let i = 0; i < state.board.length; i++) {
     for (let j = 0; j <= state.board[i].length - 4; j++) {
       if (state.board[i][j]) {
@@ -26,7 +26,7 @@ export const checkBoard = (state: ConnectFourType) => {
           state.board[i][j] === state.board[i][j + 2] &&
           state.board[i][j] === state.board[i][j + 3]
         ) {
-          return { ...state, gameOver: true };
+          return { ...state, gameOver: true, message: `Player ${currentPlayer} win!` };
         }
       }
     }
@@ -40,7 +40,7 @@ export const checkBoard = (state: ConnectFourType) => {
           state.board[i][j] === state.board[i + 2][j] &&
           state.board[i][j] === state.board[i + 3][j]
         ) {
-          return { ...state, gameOver: true };
+          return { ...state, gameOver: true, message: `Player ${currentPlayer} win!` };
         }
       }
     }
