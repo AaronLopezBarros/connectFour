@@ -4,6 +4,7 @@ export type ConnectFourType = {
   currentPlayer: number;
   board: (null[] | number[])[];
   gameOver: boolean;
+  message: string | null;
 };
 
 export type PlayType = {
