@@ -1,7 +1,7 @@
 import Cell from './Cell';
 
 import { ConnectFourType, PlayType } from '../Game/ConnectFourType';
-import { NeonGradientCard } from '../ui/neon-gradient-card';
+import { NeonGradientCard } from '../ui/neonGradientCard';
 
 type BoardType = Pick<ConnectFourType, 'board' | 'currentPlayer'> & {
   play: ({ rowIndex, cellIndex, currentPlayer }: PlayType) => void;
