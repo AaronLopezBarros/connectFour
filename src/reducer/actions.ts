@@ -6,45 +6,71 @@ type PlayTurnType = {
   cellIndex: number;
 };
 
+// Function to check if a player has four connected pieces in a given direction
+const checkWinningLine = (
+  board: (number[] | null[])[],
+  startRow: number,
+  startCol: number,
+  direction: [number, number],
+  player: number,
+): boolean => {
+  const [deltaRow, deltaCol] = direction;
+
+  // Check all 4 positions in the given direction
+  for (let i = 0; i < 4; i++) {
+    const row = startRow + deltaRow * i;
+    const col = startCol + deltaCol * i;
+
+    // Check if the position is out of bounds or if the piece is not the player's
+    if (row < 0 || row >= board.length || col < 0 || col >= board[row].length || board[row][col] !== player) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+// Function to play a turn by placing a piece on the board
 export const playTurn = ({ state, currentPlayer, cellIndex }: PlayTurnType) => {
-  for (let i = 5; i >= 0; i--) {
-    if (!state.board[i][cellIndex] && currentPlayer === state.currentPlayer) {
-      state.board[i][cellIndex] = state.currentPlayer;
-      state.currentPlayer = state.currentPlayer === 1 ? 2 : 1;
+  // Find the first available row in the selected column to place the piece
+  for (let rowIndex = 5; rowIndex >= 0; rowIndex--) {
+    if (!state.board[rowIndex][cellIndex] && currentPlayer === state.currentPlayer) {
+      // Place the piece and switch to the other player
+      state.board[rowIndex][cellIndex] = currentPlayer;
+      state.currentPlayer = currentPlayer === 1 ? 2 : 1;
       break;
     }
   }
+
+  // Return the updated state (copying to avoid direct mutation)
   return { ...state };
 };
 
+// Function to check if the current player has won
 export const checkBoard = (state: ConnectFourType, currentPlayer: number) => {
-  for (let i = 0; i < state.board.length; i++) {
-    for (let j = 0; j <= state.board[i].length - 4; j++) {
-      if (state.board[i][j]) {
-        if (
-          state.board[i][j] === state.board[i][j + 1] &&
-          state.board[i][j] === state.board[i][j + 2] &&
-          state.board[i][j] === state.board[i][j + 3]
-        ) {
-          return { ...state, gameOver: true, message: `Player ${currentPlayer} win!` };
+  const directions: [number, number][] = [
+    [0, 1], // Horizontal
+    [1, 0], // Vertical
+    [1, 1], // Descending diagonal
+    [1, -1], // Ascending diagonal
+  ];
+
+  // Iterate through each cell on the board
+  for (let rowIndex = 0; rowIndex < state.board.length; rowIndex++) {
+    for (let colIndex = 0; colIndex < state.board[rowIndex].length; colIndex++) {
+      // If the current cell has the current player's piece
+      if (state.board[rowIndex][colIndex] === currentPlayer) {
+        // Check all directions for a winning line
+        for (const direction of directions) {
+          if (checkWinningLine(state.board, rowIndex, colIndex, direction, currentPlayer)) {
+            // Return updated state indicating the game is over and the current player has won
+            return { ...state, gameOver: true, message: `Player ${currentPlayer} wins!` };
+          }
         }
       }
     }
   }
 
-  for (let j = 0; j < state.board[0].length; j++) {
-    for (let i = 0; i <= state.board.length - 4; i++) {
-      if (state.board[i][j]) {
-        if (
-          state.board[i][j] === state.board[i + 1][j] &&
-          state.board[i][j] === state.board[i + 2][j] &&
-          state.board[i][j] === state.board[i + 3][j]
-        ) {
-          return { ...state, gameOver: true, message: `Player ${currentPlayer} win!` };
-        }
-      }
-    }
-  }
-
+  // If no winner found, return the state unchanged
   return state;
 };
