@@ -1,6 +1,6 @@
-import { ConnectFourType } from '@/components/Game/ConnectFourType';
 import { GAME_TYPES } from './types';
 import { checkBoard, playTurn } from './actions';
+import { ConnectFourType } from '@/context/GameTypes';
 
 const { PLAYER_PLAY, CHECK_BOARD, START_GAME, END_GAME } = GAME_TYPES;
 

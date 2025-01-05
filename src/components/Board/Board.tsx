@@ -1,14 +1,12 @@
 import Cell from './Cell';
 
-import { ConnectFourType, PlayType } from '../Game/ConnectFourType';
 import { NeonGradientCard } from '../ui/neonGradientCard';
 import { Selector } from './Selector';
+import { ConnectFourType } from '@/context/GameTypes';
 
-type BoardType = Pick<ConnectFourType, 'board' | 'currentPlayer'> & {
-  play: ({ cellIndex, currentPlayer }: PlayType) => void;
-};
+type BoardType = Pick<ConnectFourType, 'board'>;
 
-export const Board = ({ board, currentPlayer, play }: BoardType) => {
+export const Board = ({ board }: BoardType) => {
   return (
     <div>
       <div className='flex'>
@@ -27,7 +25,7 @@ export const Board = ({ board, currentPlayer, play }: BoardType) => {
                 return (
                   <tr key={rowIndex}>
                     {row.map((cell: null | number, cellIndex: number) => (
-                      <Cell key={cellIndex} onClick={() => play({ cellIndex, currentPlayer })} value={cell} />
+                      <Cell key={cellIndex} value={cell} cellIndex={cellIndex} />
                     ))}
                   </tr>
                 );

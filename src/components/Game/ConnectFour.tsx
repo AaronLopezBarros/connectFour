@@ -1,25 +1,17 @@
 'use client';
 
-import { useReducer } from 'react';
-
+import { useContext } from 'react';
 import { Board } from '../Board/Board';
-
-import { gameReducer, initialGameState } from '@/reducer/gameReducer';
 import { GAME_TYPES } from '@/reducer/types';
-import { PlayType } from './ConnectFourType';
 import ShinyButton from '../ui/shinyButton';
 import { Message } from '../ui/message';
+import { GameContext } from '@/context/GameContext';
 
-const { PLAYER_PLAY, CHECK_BOARD, START_GAME, END_GAME } = GAME_TYPES;
+const { START_GAME, END_GAME } = GAME_TYPES;
 
 const ConnectFour = () => {
-  const [gameState, dispatchGameState] = useReducer(gameReducer, initialGameState);
-  const { gameOver, message, board, currentPlayer } = gameState;
-
-  const play = ({ cellIndex, currentPlayer }: PlayType) => {
-    dispatchGameState({ type: PLAYER_PLAY, payload: { cellIndex, currentPlayer } });
-    dispatchGameState({ type: CHECK_BOARD, payload: { cellIndex, currentPlayer } });
-  };
+  const { state, dispatch } = useContext(GameContext);
+  const { gameOver, message, board } = state;
 
   const buttonChildren = gameOver ? 'New game' : 'End game';
 
@@ -27,11 +19,11 @@ const ConnectFour = () => {
     <section className='flex h-full items-center justify-center gap-6'>
       <div className='text-center'>
         <div>{message && <Message message={message || ''} />}</div>
-        <ShinyButton onClick={() => dispatchGameState({ type: gameOver ? START_GAME : END_GAME })}>
+        <ShinyButton onClick={() => dispatch && dispatch({ type: gameOver ? START_GAME : END_GAME })}>
           {buttonChildren}
         </ShinyButton>
       </div>
-      {!gameOver && <Board board={board} currentPlayer={currentPlayer} play={play} />}
+      {!gameOver && <Board board={board} />}
     </section>
   );
 };
