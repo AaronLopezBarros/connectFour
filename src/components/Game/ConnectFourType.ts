@@ -8,7 +8,6 @@ export type ConnectFourType = {
 };
 
 export type PlayType = {
-  rowIndex: number;
   cellIndex: number;
   currentPlayer: number;
 };

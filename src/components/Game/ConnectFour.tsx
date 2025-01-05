@@ -16,9 +16,9 @@ const ConnectFour = () => {
   const [gameState, dispatchGameState] = useReducer(gameReducer, initialGameState);
   const { gameOver, message, board, currentPlayer } = gameState;
 
-  const play = ({ rowIndex, cellIndex, currentPlayer }: PlayType) => {
-    dispatchGameState({ type: PLAYER_PLAY, payload: { rowIndex, cellIndex, currentPlayer } });
-    dispatchGameState({ type: CHECK_BOARD, payload: { rowIndex, cellIndex, currentPlayer } });
+  const play = ({ cellIndex, currentPlayer }: PlayType) => {
+    dispatchGameState({ type: PLAYER_PLAY, payload: { cellIndex, currentPlayer } });
+    dispatchGameState({ type: CHECK_BOARD, payload: { cellIndex, currentPlayer } });
   };
 
   const buttonChildren = gameOver ? 'New game' : 'End game';
