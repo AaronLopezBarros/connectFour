@@ -1,8 +1,8 @@
-import Cell from './Cell';
-
-import { NeonGradientCard } from '../ui/neonGradientCard';
-import { Selector } from './Selector';
 import { ConnectFourType } from '@/context/GameTypes';
+
+import Cell from './Cell';
+import { Selector } from './Selector';
+import { NeonGradientCard } from '../ui/neonGradientCard';
 
 type BoardType = Pick<ConnectFourType, 'board'>;
 

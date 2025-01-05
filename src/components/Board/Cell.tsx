@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 
 import { GameContext } from '@/context/GameContext';
-import { GAME_TYPES } from '@/reducer/types';
 import { PlayType } from '@/context/GameTypes';
+import { GAME_TYPES } from '@/reducer/types';
 
 const { PLAYER_PLAY, CHECK_BOARD } = GAME_TYPES;
 

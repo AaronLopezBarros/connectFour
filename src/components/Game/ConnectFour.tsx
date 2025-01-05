@@ -1,11 +1,13 @@
 'use client';
 
 import { useContext } from 'react';
-import { Board } from '../Board/Board';
-import { GAME_TYPES } from '@/reducer/types';
-import ShinyButton from '../ui/shinyButton';
-import { Message } from '../ui/message';
+
 import { GameContext } from '@/context/GameContext';
+import { GAME_TYPES } from '@/reducer/types';
+
+import { Board } from '../Board/Board';
+import { Message } from '../ui/message';
+import ShinyButton from '../ui/shinyButton';
 
 const { START_GAME, END_GAME } = GAME_TYPES;
 

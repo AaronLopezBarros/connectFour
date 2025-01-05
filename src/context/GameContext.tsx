@@ -1,7 +1,9 @@
 'use client';
 
-import { gameReducer, initialGameState } from '@/reducer/gameReducer';
 import { createContext, ReactNode, useReducer } from 'react';
+
+import { gameReducer, initialGameState } from '@/reducer/gameReducer';
+
 import { ConnectFourType, GameAction } from './GameTypes';
 
 const GameContext = createContext<{

@@ -1,6 +1,7 @@
-import { GAME_TYPES } from './types';
-import { checkBoard, playTurn } from './actions';
 import { ConnectFourType } from '@/context/GameTypes';
+
+import { checkBoard, playTurn } from './actions';
+import { GAME_TYPES } from './types';
 
 const { PLAYER_PLAY, CHECK_BOARD, START_GAME, END_GAME } = GAME_TYPES;
 

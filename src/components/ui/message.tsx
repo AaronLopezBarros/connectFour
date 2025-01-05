@@ -1,6 +1,7 @@
-import LetterPullup from '../ui/letterPullup';
-import Confetti, { ConfettiRef } from '../ui/confetti';
 import { useRef } from 'react';
+
+import Confetti, { ConfettiRef } from '../ui/confetti';
+import LetterPullup from '../ui/letterPullup';
 
 export const Message = ({ message }: { message: string }) => {
   const confettiRef = useRef<ConfettiRef>(null);
