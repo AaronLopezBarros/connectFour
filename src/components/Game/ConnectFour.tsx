@@ -1,29 +1,15 @@
-'use client';
-
-import useGame from '@/context/GameContext/UseGame';
-import { GAME_TYPES } from '@/reducer/types';
-
+import { StartGameButton } from './StartGameButton';
 import { Board } from '../Board/Board';
 import { Message } from '../ui/message';
-import ShinyButton from '../ui/shinyButton';
-
-const { START_GAME, END_GAME } = GAME_TYPES;
 
 const ConnectFour: React.FC = () => {
-  const { state, dispatch } = useGame();
-  const { gameOver, board } = state;
-
-  const buttonChildren = gameOver ? 'New game' : 'End game';
-
   return (
     <section className='flex h-full items-center justify-center gap-6'>
       <div className='text-center'>
         <Message />
-        <ShinyButton onClick={() => dispatch && dispatch({ type: gameOver ? START_GAME : END_GAME })}>
-          {buttonChildren}
-        </ShinyButton>
+        <StartGameButton />
       </div>
-      {!gameOver && <Board board={board} />}
+      <Board />
     </section>
   );
 };
