@@ -4,7 +4,7 @@ import { GameContext } from '@/context/GameContext';
 import { PlayType } from '@/context/GameTypes';
 import { GAME_TYPES } from '@/reducer/types';
 
-const { PLAYER_PLAY, CHECK_BOARD } = GAME_TYPES;
+const { PLAYER_PLAY, CHECK_BOARD, SELECT_COLUMN } = GAME_TYPES;
 
 const Cell = ({ value, cellIndex }: { value: null | number; cellIndex: number }) => {
   const { state, dispatch } = useContext(GameContext);
@@ -27,7 +27,11 @@ const Cell = ({ value, cellIndex }: { value: null | number; cellIndex: number })
   };
 
   return (
-    <td onClick={() => play({ cellIndex, currentPlayer })} className='h-12 w-12 cursor-pointer border bg-cyan-400'>
+    <td
+      onMouseEnter={() => dispatch && dispatch({ type: SELECT_COLUMN, payload: { cellIndex } })}
+      onClick={() => play({ cellIndex, currentPlayer })}
+      className='h-12 w-12 cursor-pointer border bg-cyan-400'
+    >
       <div className={`${paintBackground()} h-full w-full rounded-full`}></div>
     </td>
   );

@@ -3,4 +3,5 @@ export const GAME_TYPES = {
   CHECK_BOARD: 'check_board',
   START_GAME: 'start_game',
   END_GAME: 'end_game',
+  SELECT_COLUMN: 'select_column',
 } as const;

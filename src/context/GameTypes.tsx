@@ -1,21 +1,19 @@
 import { GAME_TYPES } from '@/reducer/types';
 
-const { PLAYER_PLAY, CHECK_BOARD, START_GAME, END_GAME } = GAME_TYPES;
-
 export type ConnectFourType = {
   player1: number;
   player2: number;
   currentPlayer: number;
+  selectedColumn: number | null;
   board: (null[] | number[])[];
   gameOver: boolean;
   message: string | null;
 };
 
-export type GameAction =
-  | { type: typeof PLAYER_PLAY; payload: { cellIndex: number; currentPlayer: number } }
-  | { type: typeof CHECK_BOARD; payload: { cellIndex: number; currentPlayer: number } }
-  | { type: typeof START_GAME }
-  | { type: typeof END_GAME };
+export type GameAction = {
+  type: (typeof GAME_TYPES)[keyof typeof GAME_TYPES];
+  payload?: { cellIndex: number; currentPlayer?: number };
+};
 
 export type PlayType = {
   cellIndex: number;

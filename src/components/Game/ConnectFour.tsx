@@ -11,7 +11,7 @@ import ShinyButton from '../ui/shinyButton';
 
 const { START_GAME, END_GAME } = GAME_TYPES;
 
-const ConnectFour = () => {
+const ConnectFour: React.FC = () => {
   const { state, dispatch } = useContext(GameContext);
   const { gameOver, message, board } = state;
 
