@@ -1,6 +1,7 @@
 import useGame from '@/context/GameContext/UseGame';
+import { PlayType } from '@/context/GameTypes';
+import { playerColor } from '@/lib/contst';
 import { GAME_TYPES } from '@/reducer/types';
-import { PlayType } from '@/types/GameTypes';
 
 const { PLAYER_PLAY, CHECK_BOARD, SELECT_COLUMN } = GAME_TYPES;
 
@@ -9,12 +10,7 @@ const Cell = ({ value, cellIndex }: { value: null | number; cellIndex: number })
   const { currentPlayer } = state;
 
   const paintBackground = () => {
-    const colors: { [key: number]: string } = {
-      1: 'bg-red-400',
-      2: 'bg-yellow-400',
-    };
-
-    return value ? colors[value] : 'bg-white';
+    return value ? `bg-${playerColor[value]}-400` : 'bg-white';
   };
 
   const play = ({ cellIndex, currentPlayer }: PlayType) => {

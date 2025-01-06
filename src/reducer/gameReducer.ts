@@ -1,4 +1,4 @@
-import { ConnectFourType, GameAction } from '@/types/GameTypes';
+import { ConnectFourType, GameAction } from '@/context/GameTypes';
 
 import { checkBoard, playTurn } from './actions';
 import { GAME_TYPES } from './types';

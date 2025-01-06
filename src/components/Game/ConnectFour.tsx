@@ -11,14 +11,14 @@ const { START_GAME, END_GAME } = GAME_TYPES;
 
 const ConnectFour: React.FC = () => {
   const { state, dispatch } = useGame();
-  const { gameOver, message, board } = state;
+  const { gameOver, board } = state;
 
   const buttonChildren = gameOver ? 'New game' : 'End game';
 
   return (
     <section className='flex h-full items-center justify-center gap-6'>
       <div className='text-center'>
-        <div>{message && <Message message={message || ''} />}</div>
+        <Message />
         <ShinyButton onClick={() => dispatch && dispatch({ type: gameOver ? START_GAME : END_GAME })}>
           {buttonChildren}
         </ShinyButton>

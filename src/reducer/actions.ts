@@ -1,4 +1,5 @@
-import { ConnectFourType, PlayTurnType } from '@/types/GameTypes';
+import { ConnectFourType, PlayTurnType } from '@/context/GameTypes';
+import { playerColor } from '@/lib/contst';
 
 // Function to check if a player has four connected pieces in a given direction
 const checkWinningLine = (
@@ -32,6 +33,7 @@ export const playTurn = ({ state, currentPlayer, cellIndex }: PlayTurnType) => {
       // Place the piece and switch to the other player
       state.board[rowIndex][cellIndex] = currentPlayer;
       state.currentPlayer = currentPlayer === 1 ? 2 : 1;
+
       break;
     }
   }
@@ -58,7 +60,12 @@ export const checkBoard = (state: ConnectFourType, currentPlayer: number) => {
         for (const direction of directions) {
           if (checkWinningLine(state.board, rowIndex, colIndex, direction, currentPlayer)) {
             // Return updated state indicating the game is over and the current player has won
-            return { ...state, gameOver: true, message: `Player ${currentPlayer} wins!` };
+            return {
+              ...state,
+              gameOver: true,
+              currentPlayer: currentPlayer,
+              message: `Player ${playerColor[currentPlayer]} wins!`,
+            };
           }
         }
       }

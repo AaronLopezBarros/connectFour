@@ -4,7 +4,7 @@ import { createContext } from 'react';
 
 import { initialGameState } from '@/reducer/gameReducer';
 
-import { ConnectFourType, GameAction } from '../../types/GameTypes';
+import { ConnectFourType, GameAction } from '../GameTypes';
 
 export const GameContext = createContext<{
   state: ConnectFourType;

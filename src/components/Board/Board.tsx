@@ -1,4 +1,4 @@
-import { ConnectFourType } from '@/types/GameTypes';
+import { ConnectFourType } from '@/context/GameTypes';
 
 import Cell from './Cell';
 import { Selector } from './Selector';

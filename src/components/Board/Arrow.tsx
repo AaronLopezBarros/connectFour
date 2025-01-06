@@ -1,18 +1,14 @@
 import { useContext } from 'react';
 
 import { GameContext } from '@/context/GameContext/GameContext';
+import { playerColor } from '@/lib/contst';
 
 export const Arrow: React.FC = () => {
   const { state } = useContext(GameContext);
   const { selectedColumn, currentPlayer } = state;
 
   const paintArrow = () => {
-    const colors: { [key: number]: string } = {
-      1: 'border-t-red-400',
-      2: 'border-t-yellow-400',
-    };
-
-    return currentPlayer ? colors[currentPlayer] : 'bg-white';
+    return currentPlayer ? `border-t-${playerColor[currentPlayer]}-400` : 'bg-white';
   };
 
   return (
