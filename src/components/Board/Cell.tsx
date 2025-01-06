@@ -30,7 +30,7 @@ const Cell = ({ value, cellIndex }: { value: null | number; cellIndex: number })
       onClick={() => play({ cellIndex, currentPlayer })}
       className='h-12 w-12 cursor-pointer border bg-cyan-400'
     >
-      <div className={`${paintBackground()} h-full w-full rounded-full`}></div>
+      <div className={`${paintBackground()} h-full w-full rounded-full transition-all delay-100 ease-in-out`}></div>
     </td>
   );
 };
