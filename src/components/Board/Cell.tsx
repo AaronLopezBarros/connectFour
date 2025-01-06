@@ -1,13 +1,11 @@
-import { useContext } from 'react';
-
-import { GameContext } from '@/context/GameContext';
-import { PlayType } from '@/context/GameTypes';
+import useGame from '@/context/GameContext/UseGame';
 import { GAME_TYPES } from '@/reducer/types';
+import { PlayType } from '@/types/GameTypes';
 
 const { PLAYER_PLAY, CHECK_BOARD, SELECT_COLUMN } = GAME_TYPES;
 
 const Cell = ({ value, cellIndex }: { value: null | number; cellIndex: number }) => {
-  const { state, dispatch } = useContext(GameContext);
+  const { state, dispatch } = useGame();
   const { currentPlayer } = state;
 
   const paintBackground = () => {

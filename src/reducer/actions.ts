@@ -1,4 +1,4 @@
-import { ConnectFourType, PlayTurnType } from '@/context/GameTypes';
+import { ConnectFourType, PlayTurnType } from '@/types/GameTypes';
 
 // Function to check if a player has four connected pieces in a given direction
 const checkWinningLine = (

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { GameContext } from '@/context/GameContext';
+import { GameContext } from '@/context/GameContext/GameContext';
 
 export const Arrow: React.FC = () => {
   const { state } = useContext(GameContext);

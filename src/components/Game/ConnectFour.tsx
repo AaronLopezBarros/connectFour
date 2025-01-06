@@ -1,8 +1,6 @@
 'use client';
 
-import { useContext } from 'react';
-
-import { GameContext } from '@/context/GameContext';
+import useGame from '@/context/GameContext/UseGame';
 import { GAME_TYPES } from '@/reducer/types';
 
 import { Board } from '../Board/Board';
@@ -12,7 +10,7 @@ import ShinyButton from '../ui/shinyButton';
 const { START_GAME, END_GAME } = GAME_TYPES;
 
 const ConnectFour: React.FC = () => {
-  const { state, dispatch } = useContext(GameContext);
+  const { state, dispatch } = useGame();
   const { gameOver, message, board } = state;
 
   const buttonChildren = gameOver ? 'New game' : 'End game';
