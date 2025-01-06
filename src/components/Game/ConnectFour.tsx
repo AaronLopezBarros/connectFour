@@ -2,7 +2,7 @@ import { StartGameButton } from './StartGameButton';
 import { Board } from '../Board/Board';
 import { Message } from '../ui/message';
 
-const ConnectFour: React.FC = () => {
+const ConnectFour = () => {
   return (
     <section className='flex h-full items-center justify-center gap-6'>
       <div className='text-center'>

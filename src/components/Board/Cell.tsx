@@ -1,6 +1,6 @@
 import useGame from '@/context/GameContext/UseGame';
 import { PlayType } from '@/context/GameTypes';
-import { playerColor } from '@/lib/contst';
+import { colors } from '@/lib/contst';
 import { GAME_TYPES } from '@/reducer/types';
 
 const { PLAYER_PLAY, CHECK_BOARD, SELECT_COLUMN } = GAME_TYPES;
@@ -10,7 +10,7 @@ const Cell = ({ value, cellIndex }: { value: null | number; cellIndex: number })
   const { currentPlayer } = state;
 
   const paintBackground = () => {
-    return value ? `bg-${playerColor[value]}-400` : 'bg-white';
+    return value ? colors[value] : 'white';
   };
 
   const play = ({ cellIndex, currentPlayer }: PlayType) => {
@@ -26,7 +26,10 @@ const Cell = ({ value, cellIndex }: { value: null | number; cellIndex: number })
       onClick={() => play({ cellIndex, currentPlayer })}
       className='h-12 w-12 cursor-pointer border bg-cyan-400'
     >
-      <div className={`${paintBackground()} h-full w-full rounded-full transition-all delay-100 ease-in-out`}></div>
+      <div
+        style={{ backgroundColor: paintBackground() }}
+        className={`h-full w-full rounded-full transition-all delay-100 ease-in-out`}
+      ></div>
     </td>
   );
 };
