@@ -30,7 +30,9 @@ export const gameReducer = (state: ConnectFourType, action: GameAction): Connect
       case CHECK_BOARD:
         return checkBoard(state, currentPlayer || state.currentPlayer);
       case SELECT_COLUMN:
-        return { ...state, selectedColumn: cellIndex + 1 };
+        // Calculates the corresponding CSS Grid column (1-based index)
+        const gridColByIndex = cellIndex + 1;
+        return { ...state, selectedColumn: gridColByIndex };
       default:
         return state;
     }
