@@ -3,7 +3,7 @@ import { ConnectFourType, GameAction } from '@/context/GameTypes';
 import { checkBoard, playTurn } from './actions';
 import { GAME_TYPES } from './types';
 
-const { PLAYER_PLAY, CHECK_BOARD, START_GAME, END_GAME, SELECT_COLUMN } = GAME_TYPES;
+const { PLAYER_PLAY, CHECK_BOARD, START_GAME, END_GAME, SELECT_COLUMN, CLEAR_SELECT } = GAME_TYPES;
 
 // Helper function to initialize a blank board
 const createEmptyBoard = (): (number[] | null[])[] => {
@@ -49,6 +49,8 @@ export const gameReducer = (state: ConnectFourType, action: GameAction): Connect
       };
     case END_GAME:
       return { ...state, gameOver: true };
+    case CLEAR_SELECT:
+      return { ...state, selectedColumn: null };
     default:
       return state;
   }
