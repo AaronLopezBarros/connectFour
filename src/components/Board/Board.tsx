@@ -16,7 +16,7 @@ export const Board = () => {
         <div className='flex'>
           <Selector />
         </div>
-        <div className='flex h-full items-center justify-center'>
+        <div className='flexitems-center justify-center'>
           <NeonGradientCard
             neonColors={{ firstColor: '#f87171', secondColor: '#facc15' }}
             borderSize={10}
