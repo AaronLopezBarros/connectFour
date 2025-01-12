@@ -5,5 +5,5 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// Calculates the corresponding CSS Grid column (1-based index)
-export const getGridColByIndex = (cellIndex: number) => cellIndex + 1;
+// Calculates the corresponding column on the board (1-based index)
+export const getColumnByIndex = (cellIndex: number) => cellIndex + 1;
