@@ -1,4 +1,5 @@
 import { ConnectFourType, GameAction } from '@/context/GameTypes';
+import { getGridColByIndex } from '@/lib/utils';
 
 import { checkBoard, playTurn } from './actions';
 import { GAME_TYPES } from './types';
@@ -30,9 +31,7 @@ export const gameReducer = (state: ConnectFourType, action: GameAction): Connect
       case CHECK_BOARD:
         return checkBoard(state, currentPlayer || state.currentPlayer);
       case SELECT_COLUMN:
-        // Calculates the corresponding CSS Grid column (1-based index)
-        const gridColByIndex = cellIndex + 1;
-        return { ...state, selectedColumn: gridColByIndex };
+        return { ...state, selectedColumn: getGridColByIndex(cellIndex) };
       default:
         return state;
     }

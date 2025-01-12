@@ -5,13 +5,16 @@ import { GAME_TYPES } from '@/reducer/types';
 
 const { PLAYER_PLAY, CHECK_BOARD, SELECT_COLUMN, CLEAR_SELECT } = GAME_TYPES;
 
-const Cell = ({ value, cellIndex }: { value: null | number; cellIndex: number }) => {
+type CellProps = {
+  value: null | number;
+  cellIndex: number;
+};
+
+const Cell = ({ value, cellIndex }: CellProps) => {
   const { state, dispatch } = useGame();
   const { currentPlayer } = state;
 
-  const paintBackground = () => {
-    return value ? colors[value] : 'white';
-  };
+  const cellColor = value ? colors[value] : 'white';
 
   const play = ({ cellIndex, currentPlayer }: PlayType) => {
     if (dispatch) {
@@ -28,7 +31,7 @@ const Cell = ({ value, cellIndex }: { value: null | number; cellIndex: number })
       className='h-12 w-12 cursor-pointer border bg-cyan-400'
     >
       <div
-        style={{ backgroundColor: paintBackground() }}
+        style={{ backgroundColor: cellColor }}
         className={`h-full w-full rounded-full transition-all delay-100 ease-in-out`}
       ></div>
     </td>

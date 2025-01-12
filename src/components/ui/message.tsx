@@ -12,18 +12,17 @@ export const Message = () => {
   const { state } = useGame();
   const { message, currentPlayer } = state;
 
-  const paintBackground = () => {
-    const colors: { [key: number]: string } = {
-      1: 'text-red-400',
-      2: 'text-yellow-400',
-    };
-
-    return currentPlayer ? colors[currentPlayer] : 'bg-white';
+  const colors: { [key: number]: string } = {
+    1: 'text-red-400',
+    2: 'text-yellow-400',
   };
+
+  const textColorClass = currentPlayer ? colors[currentPlayer] : 'bg-white';
+
   return (
     message && (
       <>
-        <LetterPullup className={paintBackground()} words={message} />
+        <LetterPullup className={textColorClass} words={message} />
         <Confetti
           ref={confettiRef}
           className='absolute left-0 top-0 z-0 size-full'
