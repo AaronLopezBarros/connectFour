@@ -51,6 +51,16 @@ export const checkBoard = (state: ConnectFourType, currentPlayer: number) => {
     [1, -1], // Ascending diagonal
   ];
 
+  // Chek for a draw
+  const allFilled = state.board.every(row => row.every(cell => cell !== null));
+  if (allFilled) {
+    return {
+      ...state,
+      gameOver: true,
+      message: `It is a draw!!`,
+    };
+  }
+
   // Iterate through each cell on the board
   for (let rowIndex = 0; rowIndex < state.board.length; rowIndex++) {
     for (let colIndex = 0; colIndex < state.board[rowIndex].length; colIndex++) {
