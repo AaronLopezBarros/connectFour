@@ -1,6 +1,4 @@
-import { useContext } from 'react';
-
-import { GameContext } from '@/context/GameContext/GameContext';
+import useGame from '@/context/GameContext/UseGame';
 import { colors } from '@/lib/contst';
 import { cn } from '@/lib/utils';
 
@@ -10,7 +8,7 @@ type ArrowProps = {
 };
 
 export const Arrow = ({ column, isVisible }: ArrowProps) => {
-  const { state } = useContext(GameContext);
+  const { state } = useGame();
   const { currentPlayer } = state;
 
   const arrowColor = currentPlayer ? colors[currentPlayer] : 'bg-white';

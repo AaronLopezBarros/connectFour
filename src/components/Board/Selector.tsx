@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { GameContext } from '@/context/GameContext/GameContext';
+import useGame from '@/context/GameContext/UseGame';
 import { getColumnByIndex } from '@/lib/utils';
 
 import { Arrow } from './Arrow';
 
 export const Selector = () => {
-  const { state } = useContext(GameContext);
+  const { state } = useGame();
   const { board, selectedColumn } = state;
   const columns = board[0];
 
