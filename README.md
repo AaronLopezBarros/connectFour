@@ -36,3 +36,6 @@ This project is an implementation of the classic **Connect 4** game using **Next
 
 3. Start the development server:
    Open http://localhost:3000 in your browser to play.
+
+## 🚀 Deployed on vercel
+[ConnectFourNext](connect-four-aarons-projects-24720b7f.vercel.app)
