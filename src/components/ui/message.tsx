@@ -32,7 +32,7 @@ export const Message = () => {
             },
           }}
           onMouseEnter={() => {
-            confettiRef.current?.fire({});
+            confettiRef.current?.fire();
           }}
         />
       </>

@@ -10,7 +10,7 @@ import React, { createContext, forwardRef, useCallback, useEffect, useImperative
 import { Button, ButtonProps } from '@/components/ui/button';
 
 type Api = {
-  fire: (options?: ConfettiOptions) => void;
+  fire: () => void;
 };
 
 type Props = React.ComponentPropsWithRef<'canvas'> & {
