@@ -17,7 +17,7 @@ export const Arrow = ({ column, isVisible }: ArrowProps) => {
   return (
     <div
       className={cn(
-        'mb-5 grid h-0 w-0 animate-bounce border-l-[42px] border-r-[42px] border-t-[80px] border-transparent',
+        'mb-5 grid h-0 w-0 animate-bounce border-l-[21px] border-r-[21px] border-t-[40px] border-transparent lg:border-l-[42px] lg:border-r-[42px] lg:border-t-[80px]',
         isVisible && 'transition-all ease-in-out',
       )}
       style={{ gridColumnStart: column, borderTopColor: arrowColor, visibility: visibility }}

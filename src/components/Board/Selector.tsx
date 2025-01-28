@@ -17,5 +17,5 @@ export const Selector = () => {
       return <Arrow key={index} column={column} isVisible={isVisible} />;
     });
 
-  return <div className='grid min-h-[100px] w-[600px] grid-cols-7'>{renderArrows()}</div>;
+  return <div className='grid w-full grid-cols-7'>{renderArrows()}</div>;
 };

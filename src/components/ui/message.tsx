@@ -21,7 +21,7 @@ export const Message = () => {
 
   return (
     message && (
-      <>
+      <div className='portrait:mb-4'>
         <LetterPullup className={textColorClass} words={message} />
         <Confetti
           ref={confettiRef}
@@ -35,7 +35,7 @@ export const Message = () => {
             confettiRef.current?.fire();
           }}
         />
-      </>
+      </div>
     )
   );
 };

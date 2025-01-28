@@ -16,13 +16,13 @@ export const Board = () => {
         <div className='flex'>
           <Selector />
         </div>
-        <div className='flexitems-center justify-center'>
+        <div className='flexitems-center w-fit justify-center'>
           <NeonGradientCard
             neonColors={{ firstColor: '#f87171', secondColor: '#facc15' }}
             borderSize={10}
-            className='h-fit max-w-2xl'
+            className='h-fit w-fit sm:max-w-2xl'
           >
-            <table className='h-[500px] w-[600px] border border-cyan-400'>
+            <table className='h-fit w-fit border border-cyan-400 lg:h-[500px] lg:w-[600px]'>
               <tbody>
                 {board.map((row, rowIndex) => {
                   return (

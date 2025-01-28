@@ -4,7 +4,7 @@ import { Message } from '../ui/message';
 
 const ConnectFour = () => {
   return (
-    <section className='flex h-full items-center justify-center gap-6'>
+    <section className='flex h-full items-center justify-center gap-6 portrait:flex-col'>
       <div className='text-center'>
         <Message />
         <StartGameButton />
