@@ -1,10 +1,9 @@
 'use client';
 
+import Cell from '@/components/Board/Cell';
+import { Selector } from '@/components/Board/Selector';
+import { NeonGradientCard } from '@/components/ui/neonGradientCard';
 import useGame from '@/context/GameContext/UseGame';
-
-import Cell from './Cell';
-import { Selector } from './Selector';
-import { NeonGradientCard } from '../ui/neonGradientCard';
 
 export const Board = () => {
   const { state } = useGame();

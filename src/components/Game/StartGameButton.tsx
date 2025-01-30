@@ -1,9 +1,8 @@
 'use client';
 
+import ShinyButton from '@/components/ui/shinyButton';
 import useGame from '@/context/GameContext/UseGame';
 import { GAME_TYPES } from '@/reducer/types';
-
-import ShinyButton from '../ui/shinyButton';
 
 const { START_GAME, END_GAME } = GAME_TYPES;
 

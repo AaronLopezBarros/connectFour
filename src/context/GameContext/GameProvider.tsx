@@ -2,9 +2,8 @@
 
 import { ReactNode, useReducer } from 'react';
 
+import { GameContext } from '@/context/GameContext/GameContext';
 import { gameReducer, initialGameState } from '@/reducer/gameReducer';
-
-import { GameContext } from './GameContext';
 
 export const GameProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(gameReducer, initialGameState);

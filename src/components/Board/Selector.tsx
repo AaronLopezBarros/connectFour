@@ -1,9 +1,8 @@
 import React from 'react';
 
+import { Arrow } from '@/components/Board/Arrow';
 import useGame from '@/context/GameContext/UseGame';
 import { getColumnByIndex } from '@/lib/utils';
-
-import { Arrow } from './Arrow';
 
 export const Selector = () => {
   const { state } = useGame();

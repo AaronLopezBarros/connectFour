@@ -2,10 +2,9 @@
 
 import { useRef } from 'react';
 
+import Confetti, { ConfettiRef } from '@/components/ui/confetti';
+import LetterPullup from '@/components/ui/letterPullup';
 import useGame from '@/context/GameContext/UseGame';
-
-import Confetti, { ConfettiRef } from '../ui/confetti';
-import LetterPullup from '../ui/letterPullup';
 
 export const Message = () => {
   const confettiRef = useRef<ConfettiRef>(null);
