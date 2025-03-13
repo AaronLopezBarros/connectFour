@@ -4,7 +4,7 @@ import { Arrow } from '@/components/Board/Arrow';
 import useGame from '@/context/GameContext/UseGame';
 import { getColumnByIndex } from '@/lib/utils';
 
-export const Selector = () => {
+const Selector = () => {
   const { state } = useGame();
   const { board, selectedColumn } = state;
   const columns = board[0];
@@ -18,3 +18,5 @@ export const Selector = () => {
 
   return <div className='grid w-full grid-cols-7'>{renderArrows()}</div>;
 };
+
+export default Selector;

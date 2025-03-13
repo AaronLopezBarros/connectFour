@@ -1,11 +1,11 @@
 'use client';
 
 import Cell from '@/components/Board/Cell';
-import { Selector } from '@/components/Board/Selector';
-import { NeonGradientCard } from '@/components/ui/neonGradientCard';
+import Selector from '@/components/Board/Selector';
+import NeonGradientCard from '@/components/ui/neonGradientCard';
 import useGame from '@/context/GameContext/UseGame';
 
-export const Board = () => {
+const Board = () => {
   const { state } = useGame();
   const { gameOver, board } = state;
 
@@ -40,3 +40,5 @@ export const Board = () => {
     )
   );
 };
+
+export default Board;

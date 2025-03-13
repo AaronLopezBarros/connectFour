@@ -138,4 +138,4 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
   );
 };
 
-export { NeonGradientCard };
+export default NeonGradientCard;

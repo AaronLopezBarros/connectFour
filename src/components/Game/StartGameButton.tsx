@@ -6,7 +6,7 @@ import { GAME_TYPES } from '@/reducer/types';
 
 const { START_GAME, END_GAME } = GAME_TYPES;
 
-export const StartGameButton = () => {
+const StartGameButton = () => {
   const { state, dispatch } = useGame();
   const { gameOver } = state;
 
@@ -18,3 +18,5 @@ export const StartGameButton = () => {
     </ShinyButton>
   );
 };
+
+export default StartGameButton;

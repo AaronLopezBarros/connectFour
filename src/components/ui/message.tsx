@@ -6,7 +6,7 @@ import Confetti, { ConfettiRef } from '@/components/ui/confetti';
 import LetterPullup from '@/components/ui/letterPullup';
 import useGame from '@/context/GameContext/UseGame';
 
-export const Message = () => {
+const Message = () => {
   const confettiRef = useRef<ConfettiRef>(null);
   const { state } = useGame();
   const { message, currentPlayer } = state;
@@ -38,3 +38,5 @@ export const Message = () => {
     )
   );
 };
+
+export default Message;

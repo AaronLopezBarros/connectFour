@@ -1,6 +1,6 @@
-import { Board } from '@/components/Board/Board';
-import { StartGameButton } from '@/components/Game/StartGameButton';
-import { Message } from '@/components/ui/message';
+import Board from '@/components/Board/Board';
+import StartGameButton from '@/components/Game/StartGameButton';
+import Message from '@/components/ui/message';
 
 const ConnectFour = () => {
   return (
