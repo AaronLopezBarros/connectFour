@@ -1,7 +1,6 @@
-import { ConnectFourType, GameAction } from '@/context/GameTypes';
+import { ConnectFourType, GameAction, GAME_TYPES } from '@/game/types';
 import { getColumnByIndex } from '@/lib/utils';
 import { checkBoard, playTurn } from '@/reducer/actions';
-import { GAME_TYPES } from '@/reducer/types';
 
 const { PLAYER_PLAY, CHECK_BOARD, START_GAME, END_GAME, SELECT_COLUMN, CLEAR_SELECT } = GAME_TYPES;
 

@@ -1,4 +1,4 @@
-import { ConnectFourType, PlayTurnType } from '@/context/GameTypes';
+import { ConnectFourType, PlayTurnType } from '@/game/types';
 import { playerColor } from '@/lib/contst';
 
 // Function to check if a player has four connected pieces in a given direction

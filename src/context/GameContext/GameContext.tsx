@@ -2,7 +2,7 @@
 
 import { createContext } from 'react';
 
-import { ConnectFourType, GameAction } from '@/context/GameTypes';
+import { ConnectFourType, GameAction } from '@/game/types';
 import { initialGameState } from '@/reducer/gameReducer';
 
 export const GameContext = createContext<{
