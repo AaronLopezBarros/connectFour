@@ -5,5 +5,5 @@ export const colors: { [key: number]: string } = {
 
 export const playerColor: { [key: number]: string } = {
   1: 'red',
-  2: 'yello',
+  2: 'yellow',
 };
