@@ -1,7 +1,7 @@
 import useGame from '@/context/GameContext/UseGame';
-import { PlayType } from '@/context/GameTypes';
+import { PlayType } from '@/game/types';
+import { GAME_TYPES } from '@/game/types';
 import { colors } from '@/lib/contst';
-import { GAME_TYPES } from '@/reducer/types';
 
 const { PLAYER_PLAY, CHECK_BOARD, SELECT_COLUMN, CLEAR_SELECT } = GAME_TYPES;
 
