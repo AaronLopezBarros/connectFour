@@ -2,7 +2,7 @@
 
 import ShinyButton from '@/components/ui/shinyButton';
 import useGame from '@/context/GameContext/UseGame';
-import { GAME_TYPES } from '@/reducer/types';
+import { GAME_TYPES } from '@/game/types';
 
 const { START_GAME, END_GAME } = GAME_TYPES;
 
